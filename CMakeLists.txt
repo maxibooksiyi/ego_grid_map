@@ -47,3 +47,7 @@ target_link_libraries( plan_env
     ${catkin_LIBRARIES} 
     ${PCL_LIBRARIES}
     )  
+
+add_executable(gridmap_node src/node.cpp)
+target_link_libraries(gridmap_node ${catkin_LIBRARIES} plan_env)
+add_dependencies(gridmap_node ${catkin_EXPORTED_TARGETS})
