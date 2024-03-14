@@ -2,10 +2,10 @@
 
 <node pkg="plan_env" name="gridmap_node" type="gridmap_node" output="screen">
 
-    <remap from="~grid_map/odom" to="/mavros/local_position/odom"/>
+    <remap from="~grid_map/odom" to="/vins_estimator/imu_propagate"/>
     <remap from="~grid_map/cloud" to="nouse2"/>
     <remap from="~grid_map/pose"   to = "nouse1"/> 
-    <remap from="~grid_map/depth" to = "/iris/realsense/depth_camera/depth/image_raw"/>
+    <remap from="~grid_map/depth" to = "/camera/aligned_depth_to_color/image_raw"/>
 
     <param name="grid_map/resolution"      value="0.15" /> 
     <param name="grid_map/map_size_x"   value="50" /> 

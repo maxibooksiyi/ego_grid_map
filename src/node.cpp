@@ -10,7 +10,9 @@ int main(int argc, char** argv)
     ros::NodeHandle nh_("~");
 
     grid_map_test_.reset(new GridMap) ;
-    grid_map_test_->initMap(nh_) ; 
+    grid_map_test_->initMap(nh_) ;
+
+    //grid_map_test_->publishMap(); 
 
     ros::spin();
   

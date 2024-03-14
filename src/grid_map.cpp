@@ -95,7 +95,8 @@ void GridMap::initMap(ros::NodeHandle &nh)
 
   /* init callback */
 
-  depth_sub_.reset(new message_filters::Subscriber<sensor_msgs::Image>(node_, "/grid_map/depth", 50));
+  //depth_sub_.reset(new message_filters::Subscriber<sensor_msgs::Image>(node_, "/grid_map/depth", 50));
+  depth_sub_.reset(new message_filters::Subscriber<sensor_msgs::Image>(node_, "/camera/aligned_depth_to_color/image_raw", 50));
 
   if (mp_.pose_type_ == POSE_STAMPED)
   {
@@ -108,7 +109,8 @@ void GridMap::initMap(ros::NodeHandle &nh)
   }
   else if (mp_.pose_type_ == ODOMETRY)
   {
-    odom_sub_.reset(new message_filters::Subscriber<nav_msgs::Odometry>(node_, "/grid_map/odom", 100));
+    //odom_sub_.reset(new message_filters::Subscriber<nav_msgs::Odometry>(node_, "/grid_map/odom", 100));
+    odom_sub_.reset(new message_filters::Subscriber<nav_msgs::Odometry>(node_, "/vins_estimator/imu_propagate", 100));
 
     sync_image_odom_.reset(new message_filters::Synchronizer<SyncPolicyImageOdom>(
         SyncPolicyImageOdom(100), *depth_sub_, *odom_sub_));
