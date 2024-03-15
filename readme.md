@@ -1,7 +1,10 @@
 
-把ego-planner的plan_env模块单独拿出来，可以单独作为功能包编译通过。
+把ego-planner的plan_env模块单独拿出来，可以单独作为功能包编译通过。  
 
-参考https://blog.csdn.net/chunchun2021/article/details/134535140 添加node.cpp和launch文件。
+参考https://blog.csdn.net/chunchun2021/article/details/134535140 添加node.cpp和launch文件。  
+
+
+订阅位姿和深度图或者位姿和点云，发出的是融合后的地图PiontCloud2点云类型话题，包括/grid_map/occupancy_inflate话题和/grid_map/occupancy话题。  
 
 启动命令
 ```
