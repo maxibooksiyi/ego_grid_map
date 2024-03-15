@@ -8,3 +8,5 @@
 roslaunch plan_env grid_map.launch
 ```
 可以配合densesurfelmapping提供的带有odom和深度图的bag包一起跑  
+
+注意实际订阅的odom话题以及深度图话题需要在grid_map.cpp里面订阅话题的位置改，目前没有通过launch文件传参的形式，所以grid_map.launch文件里面设定的odom话题和深度图话名称是不生效的。  
