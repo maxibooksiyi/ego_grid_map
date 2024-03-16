@@ -13,3 +13,13 @@ roslaunch plan_env grid_map.launch
 可以配合densesurfelmapping提供的带有odom和深度图的bag包一起跑  
 
 注意实际订阅的odom话题以及深度图话题需要在grid_map.cpp里面订阅话题的位置改，目前没有通过launch文件传参的形式，所以grid_map.launch文件里面设定的odom话题和深度图话名称是不生效的。  
+比如订阅的是odometry类型的位姿话题和深度图话题时，修改grid_map.cpp里面下面两句话里订阅的话题名称为实际的深度图话题名称和位姿话题名称，修改完重新catkin_make编译生效。  
+
+```
+depth_sub_.reset(new message_filters::Subscriber<sensor_msgs::Image>(node_, "/camera/aligned_depth_to_color/image_raw", 50));
+```
+```
+odom_sub_.reset(new message_filters::Subscriber<nav_msgs::Odometry>(node_, "/vins_estimator/imu_propagate", 100));
+```
+
+订阅的位姿话题是odometry类型还是posestamped类型，由launch文件中pose_type参数决定，1为posestamped类型，2为odometry类型。  
